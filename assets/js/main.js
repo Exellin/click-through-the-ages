@@ -1,4 +1,4 @@
-var resources = document.querySelectorAll(".resource");
+var resources = document.querySelectorAll(".resource_image_container");
 
 for(var i = 0; i < resources.length; i++) {
   resources[i].addEventListener("click", clickEvents);
