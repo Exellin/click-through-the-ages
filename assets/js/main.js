@@ -1,26 +1,41 @@
-var resources = document.querySelectorAll(".resource_image_container");
+var gameState = {
+  stone: null,
+  food: null
+};
 
-for(var i = 0; i < resources.length; i++) {
-  resources[i].addEventListener("click", clickEvents);
+initialize();
+
+function initialize() {
+  gameState = {
+    stone: 0,
+    food: 0
+  };
+
+  var resourceImageContainers = document.querySelectorAll(".resource_image_container");
+  for(var i = 0; i < resourceImageContainers.length; i++) {
+    resourceImageContainers[i].addEventListener("click", clickEvents);
+  }
+  
+  updateDisplay(gameState);
 }
 
 function clickEvents() {
-  animate_resource(this);
-  increment_resource(this.id);
+  animateResource(this);
+  incrementResource(this.id.substring(0, this.id.indexOf('_')));
 }
   
-function animate_resource(resourceDiv) {
+function animateResource(resourceImageContainer) {
   var start = null;
   var maxDuration = 600;
   var newResourceImg = document.createElement("img");
-  var resourceImg = resourceDiv.querySelector("img");
+  var resourceImg = resourceImageContainer.querySelector("img");
   var html = document.querySelector("html");
   var maxY = html.clientHeight - resourceImg.clientHeight;
   var startX = resourceImg.getBoundingClientRect().left - 5;
   var startY = resourceImg.getBoundingClientRect().top - 5;
   newResourceImg.src = resourceImg.src;
   newResourceImg.style.position = "absolute";
-  resourceDiv.appendChild(newResourceImg);
+  resourceImageContainer.appendChild(newResourceImg);
   var progress, x, y;
   requestAnimationFrame(step);
   
@@ -35,13 +50,18 @@ function animate_resource(resourceDiv) {
       window.requestAnimationFrame(step);
     }
     else {
-      resourceDiv.removeChild(newResourceImg);
+      resourceImageContainer.removeChild(newResourceImg);
     }
   }
 }
     
-function increment_resource(resource) {
-  var stockpile_id = "#" + resource + "_stockpile";
-  var stockpiled_resources = Number(document.querySelector(stockpile_id).textContent) + 1;
-  document.querySelector(stockpile_id).textContent = stockpiled_resources;
+function incrementResource(resource) {
+  gameState[resource] += 1;
+  updateDisplay(gameState);
+}
+
+function updateDisplay(gameState) {
+  Object.keys(gameState).forEach(function(key) {
+    document.querySelector("#" + key).textContent = gameState[key];
+  });
 }
