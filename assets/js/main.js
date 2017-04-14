@@ -5,8 +5,12 @@ for(var i = 0; i < resources.length; i++) {
 }
 
 function clickEvents() {
+  animate_resource(this);
+  increment_resource(this.id);
+}
+  
+function animate_resource(resourceDiv) {
   var start = null;
-  var resourceDiv = this;
   var maxDuration = 600;
   var newResourceImg = document.createElement("img");
   var resourceImg = resourceDiv.querySelector("img");
@@ -34,4 +38,10 @@ function clickEvents() {
       resourceDiv.removeChild(newResourceImg);
     }
   }
+}
+    
+function increment_resource(resource) {
+  var stockpile_id = "#" + resource + "_stockpile";
+  var stockpiled_resources = Number(document.querySelector(stockpile_id).textContent) + 1;
+  document.querySelector(stockpile_id).textContent = stockpiled_resources;
 }
