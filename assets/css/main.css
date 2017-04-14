@@ -21,6 +21,10 @@
   text-decoration: none;
 }
 
+.footer button {
+  height: 32px;
+}
+
 .resource {
   float: left;
   top: 100px;

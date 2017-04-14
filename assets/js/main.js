@@ -1,22 +1,20 @@
 var gameState = {
-  stone: null,
-  food: null
+  stone: 0,
+  food: 0
 };
 
 initialize();
 
 function initialize() {
-  gameState = {
-    stone: 0,
-    food: 0
-  };
+  load();
 
   var resourceImageContainers = document.querySelectorAll(".resource_image_container");
   for(var i = 0; i < resourceImageContainers.length; i++) {
     resourceImageContainers[i].addEventListener("click", clickEvents);
   }
   
-  updateDisplay(gameState);
+  document.querySelector("#save").addEventListener("click", save);
+  document.querySelector("#delete").addEventListener("click", deleteSave);
 }
 
 function clickEvents() {
@@ -64,4 +62,38 @@ function updateDisplay(gameState) {
   Object.keys(gameState).forEach(function(key) {
     document.querySelector("#" + key).textContent = gameState[key];
   });
+}
+
+function save() {
+  try {
+    window.localStorage.setItem("save",JSON.stringify(gameState));
+    alert("Game manually saved");
+  } catch(err) {
+    console.log("Cannot save to localStorage");
+  }
+}
+
+function load() {
+  try {
+    var savegame = JSON.parse(window.localStorage.getItem("save"));
+  } catch(err) {
+    console.log('Cannot load from localStorage');
+  }
+
+  if (savegame) {
+    Object.keys(gameState).forEach(function(key) {
+      if (typeof(savegame[key]) !== undefined)  gameState[key] = savegame[key];
+    });
+  }
+  updateDisplay(gameState);
+}
+
+function deleteSave() {
+  if (window.confirm("Are you sure you want to delete your save?")){
+    window.localStorage.removeItem("save");
+    Object.keys(gameState).forEach(function(key) {
+      gameState[key] = 0;
+    });
+    updateDisplay(gameState);
+  }
 }
