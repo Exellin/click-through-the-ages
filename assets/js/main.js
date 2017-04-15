@@ -1,12 +1,16 @@
 var gameState = {
-  stone: 0,
-  food: 0
+    resources : { stone : 0, food : 0 }
 };
+
+window.setInterval(function() {
+  save();
+}, 1000);
 
 initialize();
 
 function initialize() {
   load();
+  updateDisplay();
 
   var resourceImageContainers = document.querySelectorAll(".resource_image_container");
   for(var i = 0; i < resourceImageContainers.length; i++) {
@@ -54,20 +58,26 @@ function animateResource(resourceImageContainer) {
 }
     
 function incrementResource(resource) {
-  gameState[resource] += 1;
-  updateDisplay(gameState);
+  gameState.resources[resource] += 1;
+  updateDisplay();
 }
 
-function updateDisplay(gameState) {
-  Object.keys(gameState).forEach(function(key) {
-    document.querySelector("#" + key).textContent = gameState[key];
+function updateDisplay() {
+  Object.keys(gameState).forEach(function(category) {
+    loop(gameState[category]);
   });
+
+  function loop(category) {
+    Object.keys(category).forEach(function(key) {
+      document.querySelector("#" + key).textContent = category[key];
+    });
+  }
 }
 
 function save() {
   try {
     window.localStorage.setItem("save",JSON.stringify(gameState));
-    if(this.textContent === "Save Game") {
+    if (this.textContent === "Save Game") {
       alert("Manually saved the game");
     }
   } catch(err) {
@@ -81,25 +91,32 @@ function load() {
   } catch(err) {
     console.log('Cannot load from localStorage');
   }
-
+  
   if (savegame) {
-    Object.keys(gameState).forEach(function(key) {
-      if (typeof(savegame[key]) !== undefined)  gameState[key] = savegame[key];
+    Object.keys(gameState).forEach(function(category) {
+      setProperties(gameState[category], savegame[category]);
     });
   }
-  updateDisplay(gameState);
+  
+  function setProperties(category, savegameCategory) {
+    Object.keys(category).forEach(function(key) {
+      if (typeof(savegameCategory[key]) !== undefined)  category[key] = savegameCategory[key];
+    });
+  }
 }
 
 function deleteSave() {
-  if (window.confirm("Are you sure you want to delete your save?")){
+  if (window.confirm("Are you sure you want to delete your save?")) {
     window.localStorage.removeItem("save");
-    Object.keys(gameState).forEach(function(key) {
-      gameState[key] = 0;
+    Object.keys(gameState).forEach(function(category) {
+      setToZero(gameState[category]);
     });
     updateDisplay(gameState);
   }
+  
+  function setToZero(category) {
+    Object.keys(category).forEach(function(key) {
+      category[key] = 0;
+    });
+  }
 }
-
-window.setInterval(function() {
-  save();
-}, 1000);
