@@ -67,7 +67,9 @@ function updateDisplay(gameState) {
 function save() {
   try {
     window.localStorage.setItem("save",JSON.stringify(gameState));
-    alert("Game manually saved");
+    if(this.textContent === "Save Game") {
+      alert("Manually saved the game");
+    }
   } catch(err) {
     console.log("Cannot save to localStorage");
   }
@@ -97,3 +99,7 @@ function deleteSave() {
     updateDisplay(gameState);
   }
 }
+
+window.setInterval(function() {
+  save();
+}, 1000);
