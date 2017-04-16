@@ -32,9 +32,43 @@
 
 .resource img {
   cursor: pointer;
+  z-index: 1;
 }
 
 .resource div {
   text-align: center;
   margin-bottom: 20px;
 }
+
+.building {
+  clear: both;
+  background: url(../images/farm.jpg);
+  width: 400px;
+  height: 100px;
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+}
+
+.building_header, .building_footer {
+  height: 25px;
+  background: black;
+  line-height: 25px;
+}
+
+.building_footer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.building_footer img {
+  float: left;
+}
+
+#farm_total {
+  float: right;
+}
+
