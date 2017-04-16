@@ -25,19 +25,17 @@
   height: 32px;
 }
 
-.resource {
-  float: left;
-  top: 100px;
-}
-
-.resource img {
+.resources img {
   cursor: pointer;
   z-index: 1;
 }
 
-.resource div {
+.resources tr {
   text-align: center;
-  margin-bottom: 20px;
+}
+
+.resources td, .resources th {
+  padding: 10px 0;
 }
 
 .building {
@@ -45,17 +43,19 @@
   background: url(../images/farm.jpg);
   width: 400px;
   height: 100px;
-  font-size: 25px;
-  color: white;
-  font-weight: bold;
   cursor: pointer;
   position: relative;
+  margin-top: 10px;
 }
 
-.building_header, .building_footer {
+.border {
+  color: white;
+  font-size: 25px;
   height: 25px;
   background: black;
   line-height: 25px;
+  width: 100%;
+  font-weight: bold;
 }
 
 .building_footer {
@@ -64,7 +64,7 @@
   bottom: 0;
 }
 
-.building_footer img {
+.border img {
   float: left;
 }
 
@@ -72,3 +72,15 @@
   float: right;
 }
 
+#population {
+  width: 400px;
+  cursor: pointer;
+}
+
+#population table{
+  font-size: 25px;
+  float: right;
+  text-align: center;
+  width: 75%;
+  padding-top: 17px;
+}

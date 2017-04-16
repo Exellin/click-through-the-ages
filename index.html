@@ -6,39 +6,72 @@
 </head>
 <body>
 
-<div class="resource">
-  <div class="resource_title">Stone</div>
-  <div><span id="stone_total"></span> / <span id="stone_storage"></span></div>
-  <div><span id="stone_rate">0.0</span>/s</div>
-  <div class="resource_image_container" id="stone">
-    <img src="https://maxcdn.icons8.com/Color/PNG/96/Beauty/stones-96.png">
-  </div>
-</div>
+<table class="resources">
+  <thead>
+    <tr>
+      <th>Stone</th>
+      <th>Food</th>
+      <th>Wood</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span id="stone_total"></span> / <span id="stone_storage"></span></td>
+      <td><span id="food_total"></span> / <span id="food_storage"></span></td>
+      <td><span id="wood_total"></span> / <span id="wood_storage"></span></td>
+    </tr>
+    <tr>
+      <td><span id="stone_rate">0.0</span>/s</td>
+      <td><span id="food_rate">0.0</span>/s</td>
+      <td><span id="wood_rate">0.0</span>/s</td>
+    </tr>
+    <tr>
+      <td class="resource_image_container" id="stone">
+        <img src="https://maxcdn.icons8.com/Color/PNG/96/Beauty/stones-96.png">
+      </td>
+      <td class="resource_image_container" id="food">
+        <img src="https://maxcdn.icons8.com/Color/PNG/96/Plants/wheat-96.png">
+      </td>
+      <td class="resource_image_container" id="wood">
+        <img src="https://maxcdn.icons8.com/Color/PNG/96/Travel/forest-96.png">
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="resource">
-  <div class="resource_title">Food</div>
-  <div><span id="food_total"></span> / <span id="food_storage"></span></div>
-  <div><span id="food_rate">0.0</span>/s</div>
-  <div class="resource_image_container" id="food">
-    <img src="https://maxcdn.icons8.com/Color/PNG/96/Plants/wheat-96.png">
+<div id="population" >
+  <div class="border">
+    Population
   </div>
-</div>
-
-<div class="resource">
-  <div class="resource_title">Wood</div>
-  <div><span id="wood_total"></span> / <span id="wood_storage"></span></div>
-  <div><span id="wood_rate">0.0</span>/s</div>
-  <div class="resource_image_container" id="wood">
-    <img src="https://maxcdn.icons8.com/Color/PNG/96/Travel/forest-96.png">
+  <img src="https://maxcdn.icons8.com/iOS7/PNG/100/Users/global_citizen_filled-100.png">
+  <table>
+    <thead>
+      <tr>
+        <th>Employed</th>
+        <th>Total</th>
+        <th>Cap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span id="population_working">0</span></td>
+        <td><span id="population_total">0</span></td>
+        <td><span id="population_storage">0</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="border">
+    <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+    <span id="population_cost">20</span>
   </div>
 </div>
 
 <div class="building" id="farm">
-  <div class="building_header">
+  <div class="border">
     <span>Farm</span>
     <span id="farm_total"></span>
   </div>
-  <div class="building_footer">
+  <div class="border building_footer">
     <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
     <span id="farm_wood_cost"></span>
   </div>
