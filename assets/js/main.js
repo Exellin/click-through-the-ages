@@ -24,7 +24,15 @@ function setDefaults() {
         name: "farm",
         total: 0,
         wood_cost: 10,
-        food_rate: 1
+        food_rate: 2,
+        worked: 0
+      },
+    population: {
+        name: "population",
+        total: 0,
+        food_cost: 10,
+        food_rate: -1,
+        storage: 0
       }
     }
   };
@@ -131,6 +139,9 @@ function updateDisplay() {
     setProperty(gameState[category], "total");
     setProperty(gameState[category], "storage");
     setProperty(gameState[category], "wood_cost");
+    setProperty(gameState[category], "food_rate");
+    setProperty(gameState[category], "food_cost");
+    setProperty(gameState[category], "worked");
   });
   
   function setProperty(category, property) {

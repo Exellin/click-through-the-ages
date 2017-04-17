@@ -1,4 +1,4 @@
-.body {
+.body, ul{
   margin: 0;
   padding: 0;
 }
@@ -38,14 +38,32 @@
   padding: 10px 0;
 }
 
-.building {
+#farm {
   clear: both;
   background: url(../images/farm.jpg);
-  width: 400px;
+  width: 75%;
   height: 100px;
   cursor: pointer;
   position: relative;
+  float: left;
+}
+
+.building_container {
   margin-top: 10px;
+  width: 400px;
+}
+
+.worker_buttons {
+  float: right;
+  width: 25%;
+}
+
+ul li {
+  list-style: none;
+}
+
+ul li button {
+  height: 50px;
 }
 
 .border {
@@ -64,11 +82,11 @@
   bottom: 0;
 }
 
-.border img {
+.border .cost {
   float: left;
 }
 
-#farm_total {
+.cost img, .border .rate, .rate img, .worked {
   float: right;
 }
 

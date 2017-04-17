@@ -39,7 +39,7 @@
   </tbody>
 </table>
 
-<div id="population" >
+<div class="building" id="population">
   <div class="border">
     Population
   </div>
@@ -55,27 +55,55 @@
     <tbody>
       <tr>
         <td><span id="population_working">0</span></td>
-        <td><span id="population_total">0</span></td>
-        <td><span id="population_storage">0</span></td>
+        <td><span id="population_total"></span></td>
+        <td><span id="population_storage"></span></td>
       </tr>
     </tbody>
   </table>
   <div class="border">
-    <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
-    <span id="population_cost">20</span>
+    <div class="cost">
+      <span id="population_food_cost"></span>
+      <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+    </div>
+    <div class="rate">
+      <span id="population_food_rate"></span>/s
+      <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+    </div>
   </div>
 </div>
 
-<div class="building" id="farm">
-  <div class="border">
-    <span>Farm</span>
-    <span id="farm_total"></span>
+<div class="building_container">
+  <div class="building" id="farm">
+    <div class="border">
+      <span>Farm</span>
+      <div class="worked">
+        <span id="farm_worked"></span> / 
+        <span id="farm_total"></span>
+      </div>
+    </div>
+    <div class="border building_footer">
+      <div class="cost">
+        <span id="farm_wood_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
+      </div>
+      <div class="rate">
+        <span id="farm_food_rate"></span>/s
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+      </div>
+    </div>
   </div>
-  <div class="border building_footer">
-    <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
-    <span id="farm_wood_cost"></span>
-  </div>
+  <div class="worker_buttons">
+    <ul>
+      <li>
+        <button class="assign">Assign Worker</button>
+      </li>
+      <li>
+        <button class="remove">Remove Worker</button>
+      </li>
+    </ul>
+  </div>  
 </div>
+
 
 <section class="footer">
   <button id="save">Save Game</button>
