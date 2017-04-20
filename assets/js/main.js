@@ -187,9 +187,7 @@ function deleteSave() {
 
 function addResources() {
   Object.keys(gameState.resources).forEach(function (resourceName) {
-    if (gameState.resources[resourceName].total <= gameState.resources[resourceName].storage) {
-      gameState.resources[resourceName].total += calculateResourceRate(resourceName);
-    }
+    gameState.resources[resourceName].total += calculateResourceRate(resourceName);
   });
   
   function calculateResourceRate(resourceName) {
@@ -201,6 +199,9 @@ function addResources() {
     });
     if (resourcesPerTick > (gameState.resources[resourceName].storage - gameState.resources[resourceName].total)) {
       resourcesPerTick = gameState.resources[resourceName].storage - gameState.resources[resourceName].total;
+    }
+    else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
+      resourcesPerTick = 0 - gameState.resources[resourceName].total ;
     }
     return resourcesPerTick;
   }
