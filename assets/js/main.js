@@ -91,15 +91,30 @@ function purchaseBuilding() {
   });
   
   if (canPurchase === true) {
+    var maxPopulation = calculateMaxPopulation();
     Object.keys(gameState.resources).forEach(function(resourceName) {
       var resourceCost = gameState.buildings[buildingName][resourceName + "_cost"];
       if (resourceCost) {
-        gameState.resources[resourceName].total -= resourceCost;
-        gameState.buildings[buildingName][resourceName + "_cost"] += 10;
+        if (buildingName === "population") {
+          console.log("testing if " + gameState.buildings[buildingName].total + " is less then " + maxPopulation);
+          if (gameState.buildings[buildingName].total < maxPopulation) {
+            gameState.resources[resourceName].total -= resourceCost;
+            gameState.buildings[buildingName][resourceName + "_cost"] += 10;
+          }
+        } else {
+          gameState.resources[resourceName].total -= resourceCost;
+          gameState.buildings[buildingName][resourceName + "_cost"] += 10;
+        }
         updateDisplay();
       }
     });
-    gameState.buildings[buildingName].total += 1;
+    if (buildingName === "population") {
+       if (gameState.buildings[buildingName].total < maxPopulation) {
+          gameState.buildings[buildingName].total += 1;
+       }
+    } else {
+      gameState.buildings[buildingName].total += 1;
+    }
     updateDisplay();
   }
 }
@@ -146,6 +161,7 @@ function updateDisplay() {
     setProperty(gameState[category], "storage");
     setProperty(gameState[category], "wood_cost");
     setProperty(gameState[category], "food_cost");
+    setProperty(gameState[category], "food_rate");
     setProperty(gameState[category], "stone_cost");
     setProperty(gameState[category], "worked");
     setProperty(gameState[category], "population");
@@ -154,6 +170,8 @@ function updateDisplay() {
   Object.keys(gameState.resources).forEach(function (resourceName) {
     calculateResourceRate(resourceName);
   });
+  
+  calculateMaxPopulation();
   
   function setProperty(category, property) {
     Object.keys(category).forEach(function(key) {
@@ -197,14 +215,14 @@ function deleteSave() {
 }
 
 function addResources() {
-  Object.keys(gameState.resources).forEach(function (resourceName) {
+  Object.keys(gameState.resources).forEach(function(resourceName){
     gameState.resources[resourceName].total += calculateResourceRate(resourceName);
   });
 }
 
 function calculateResourceRate(resourceName) {
   var resourcesPerTick = 0;
-  Object.keys(gameState.buildings).forEach(function (buildingName) {
+  Object.keys(gameState.buildings).forEach(function(buildingName) {
     if (gameState.buildings[buildingName][resourceName + "_rate"]) {
       resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].total;
       document.querySelector("#" + resourceName + "_rate").textContent = resourcesPerTick;
@@ -217,4 +235,15 @@ function calculateResourceRate(resourceName) {
     resourcesPerTick = 0 - gameState.resources[resourceName].total;
   }
   return resourcesPerTick;
+}
+
+function calculateMaxPopulation() {
+  var maxPopulation = 0;
+  Object.keys(gameState.buildings).forEach(function(buildingName) {
+    if (gameState.buildings[buildingName].population) {
+      maxPopulation += gameState.buildings[buildingName].population * gameState.buildings[buildingName].total;
+      document.querySelector("#population_storage").textContent = maxPopulation;
+    }
+  });
+  return maxPopulation;
 }
