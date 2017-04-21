@@ -145,11 +145,14 @@ function updateDisplay() {
     setProperty(gameState[category], "total");
     setProperty(gameState[category], "storage");
     setProperty(gameState[category], "wood_cost");
-    setProperty(gameState[category], "food_rate");
     setProperty(gameState[category], "food_cost");
     setProperty(gameState[category], "stone_cost");
     setProperty(gameState[category], "worked");
     setProperty(gameState[category], "population");
+  });
+
+  Object.keys(gameState.resources).forEach(function (resourceName) {
+    calculateResourceRate(resourceName);
   });
   
   function setProperty(category, property) {
@@ -197,20 +200,21 @@ function addResources() {
   Object.keys(gameState.resources).forEach(function (resourceName) {
     gameState.resources[resourceName].total += calculateResourceRate(resourceName);
   });
-  
-  function calculateResourceRate(resourceName) {
-    var resourcesPerTick = 0;
-    Object.keys(gameState.buildings).forEach(function (buildingName) {
-      if (gameState.buildings[buildingName][resourceName + "_rate"]) {
-        resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].total;
-      }
-    });
-    if (resourcesPerTick > (gameState.resources[resourceName].storage - gameState.resources[resourceName].total)) {
-      resourcesPerTick = gameState.resources[resourceName].storage - gameState.resources[resourceName].total;
+}
+
+function calculateResourceRate(resourceName) {
+  var resourcesPerTick = 0;
+  Object.keys(gameState.buildings).forEach(function (buildingName) {
+    if (gameState.buildings[buildingName][resourceName + "_rate"]) {
+      resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].total;
+      document.querySelector("#" + resourceName + "_rate").textContent = resourcesPerTick;
     }
-    else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
-      resourcesPerTick = 0 - gameState.resources[resourceName].total;
-    }
-    return resourcesPerTick;
+  });
+  if (resourcesPerTick > (gameState.resources[resourceName].storage - gameState.resources[resourceName].total)) {
+    resourcesPerTick = gameState.resources[resourceName].storage - gameState.resources[resourceName].total;
   }
+  else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
+    resourcesPerTick = 0 - gameState.resources[resourceName].total;
+  }
+  return resourcesPerTick;
 }
