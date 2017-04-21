@@ -39,34 +39,44 @@
 }
 
 #farm {
-  clear: both;
   background: url(../images/farm.jpg);
+  height: 86px;
   width: 75%;
-  height: 100px;
-  cursor: pointer;
-  position: relative;
   float: left;
+}
+
+#hut {
+  background: url(../images/hut.jpg);
+  width: 300px;
+  height: 86px;
 }
 
 .building_container {
   margin-top: 10px;
-  width: 400px;
+  width: 300px;
+}
+
+.building {
+  cursor: pointer;
 }
 
 .worker_buttons {
   float: right;
   width: 25%;
+  height: 86px
 }
 
 ul li {
   list-style: none;
+  height: 43px;
 }
 
 ul li button {
-  height: 50px;
+  height: 100%;
 }
 
 .border {
+  clear: both;
   color: white;
   font-size: 25px;
   height: 25px;
@@ -76,29 +86,30 @@ ul li button {
   font-weight: bold;
 }
 
-.building_footer {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-}
-
 .border .cost {
   float: left;
 }
 
-.cost img, .border .rate, .rate img, .worked {
+.cost img, .border img, .right{
   float: right;
 }
 
 #population {
-  width: 400px;
+  width: 300px;
   cursor: pointer;
 }
 
 #population table{
   font-size: 25px;
   float: right;
+  width: 66%;
   text-align: center;
-  width: 75%;
   padding-top: 17px;
+}
+
+.population_icon {
+  background: url("../images/population.png");
+  width: 24px;
+  height: 24px;
+  float: right;
 }

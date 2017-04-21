@@ -27,12 +27,18 @@ function setDefaults() {
         food_rate: 2,
         worked: 0
       },
-    population: {
+      population: {
         name: "population",
         total: 0,
         food_cost: 10,
         food_rate: -1,
         storage: 0
+      },
+      hut: {
+        name: "hut",
+        total: 0,
+        stone_cost: 10,
+        population: 2
       }
     }
   };
@@ -141,7 +147,9 @@ function updateDisplay() {
     setProperty(gameState[category], "wood_cost");
     setProperty(gameState[category], "food_rate");
     setProperty(gameState[category], "food_cost");
+    setProperty(gameState[category], "stone_cost");
     setProperty(gameState[category], "worked");
+    setProperty(gameState[category], "population");
   });
   
   function setProperty(category, property) {
@@ -201,7 +209,7 @@ function addResources() {
       resourcesPerTick = gameState.resources[resourceName].storage - gameState.resources[resourceName].total;
     }
     else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
-      resourcesPerTick = 0 - gameState.resources[resourceName].total ;
+      resourcesPerTick = 0 - gameState.resources[resourceName].total;
     }
     return resourcesPerTick;
   }
