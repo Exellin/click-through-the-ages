@@ -66,8 +66,37 @@ function initialize() {
     buildingContainers[i].addEventListener("click", purchaseBuilding);
   }
   
+  var assignButtons = document.querySelectorAll(".assign");
+  for (var i = 0; i < assignButtons.length; i++) {
+    assignButtons[i].addEventListener("click", assignWorker);
+  }
+  
+  var removeButtons = document.querySelectorAll(".remove");
+  for (var i = 0; i < assignButtons.length; i++) {
+    removeButtons[i].addEventListener("click", removeWorker);
+  }
+  
   document.querySelector("#save").addEventListener("click", save);
   document.querySelector("#delete").addEventListener("click", deleteSave);
+}
+
+function assignWorker() {
+  var buildingName = this.id.substring(0, this.id.indexOf('_'));
+  var unemployed = calculateUnemployed();
+  if (gameState.buildings[buildingName].worked < gameState.buildings[buildingName].total && unemployed > 0) {
+    gameState.buildings[buildingName].worked += 1;
+    calculateUnemployed();
+    updateDisplay();
+  }
+}
+
+function removeWorker() {
+  var buildingName = this.id.substring(0, this.id.indexOf('_'));
+  if (gameState.buildings[buildingName].worked > 0) {
+    gameState.buildings[buildingName].worked -= 1;
+    calculateUnemployed();
+    updateDisplay();
+  }
 }
 
 function resourceClickEvents() {
@@ -96,7 +125,6 @@ function purchaseBuilding() {
       var resourceCost = gameState.buildings[buildingName][resourceName + "_cost"];
       if (resourceCost) {
         if (buildingName === "population") {
-          console.log("testing if " + gameState.buildings[buildingName].total + " is less then " + maxPopulation);
           if (gameState.buildings[buildingName].total < maxPopulation) {
             gameState.resources[resourceName].total -= resourceCost;
             gameState.buildings[buildingName][resourceName + "_cost"] += 10;
@@ -224,7 +252,11 @@ function calculateResourceRate(resourceName) {
   var resourcesPerTick = 0;
   Object.keys(gameState.buildings).forEach(function(buildingName) {
     if (gameState.buildings[buildingName][resourceName + "_rate"]) {
-      resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].total;
+      if (buildingName === "population") {
+        resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].total;
+      } else {
+        resourcesPerTick += gameState.buildings[buildingName][resourceName + "_rate"] * gameState.buildings[buildingName].worked;
+      }
       document.querySelector("#" + resourceName + "_rate").textContent = resourcesPerTick;
     }
   });
@@ -245,5 +277,18 @@ function calculateMaxPopulation() {
       document.querySelector("#population_storage").textContent = maxPopulation;
     }
   });
+  calculateUnemployed();
   return maxPopulation;
+}
+
+function calculateUnemployed() {
+  var employed = 0;
+  Object.keys(gameState.buildings).forEach(function(buildingName) {
+    if (gameState.buildings[buildingName].worked) {
+      employed += gameState.buildings[buildingName].worked;
+    }
+  });
+  var unemployed = gameState.buildings.population.total - employed;
+  document.querySelector("#population_unemployed").textContent = unemployed;
+  return unemployed;
 }

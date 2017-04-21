@@ -39,26 +39,28 @@
   </tbody>
 </table>
 
-<div class="building" id="population">
+<div class="building_container">
   <div class="border">
     Population
     <div class="right">
       <span id="population_total"></span> / <span id="population_storage"></span>
     </div>
   </div>
-  <img src="https://maxcdn.icons8.com/iOS7/PNG/100/Users/global_citizen_filled-100.png">
-  <table>
-    <thead>
-      <tr>
-        <th>Unemployed</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span id="population_unemployed">0</span></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="building" id="population">
+    <img src="https://maxcdn.icons8.com/iOS7/PNG/100/Users/global_citizen_filled-100.png">
+    <table>
+      <thead>
+        <tr>
+          <th>Unemployed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span id="population_unemployed">0</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <div class="border">
     <div class="cost">
       <span id="population_food_cost"></span>
@@ -70,6 +72,7 @@
     </div>
   </div>
 </div>
+
 
 <div class="building_container">
   <div class="border">
@@ -105,10 +108,10 @@
   <div class="worker_buttons">
     <ul>
       <li>
-        <button class="assign">Assign Worker</button>
+        <button class="assign" id="farm_assign_worker">Assign Worker</button>
       </li>
       <li>
-        <button class="remove">Remove Worker</button>
+        <button class="remove" id="farm_remove_worker">Remove Worker</button>
       </li>
     </ul>
   </div>  
