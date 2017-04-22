@@ -27,6 +27,13 @@ function setDefaults() {
         food_rate: 2,
         worked: 0
       },
+      quarry: {
+        name: "quarry",
+        total: 0,
+        stone_cost: 10,
+        stone_rate: 2,
+        worked: 0
+      },
       population: {
         name: "population",
         total: 0,
@@ -191,6 +198,7 @@ function updateDisplay() {
     setProperty(gameState[category], "food_cost");
     setProperty(gameState[category], "food_rate");
     setProperty(gameState[category], "stone_cost");
+    setProperty(gameState[category], "stone_rate");
     setProperty(gameState[category], "worked");
     setProperty(gameState[category], "population");
   });

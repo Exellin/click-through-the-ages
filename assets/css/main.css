@@ -38,11 +38,19 @@
   padding: 10px 0;
 }
 
-#farm {
-  background: url(../images/farm.jpg);
+
+#farm, #quarry {
   height: 86px;
   width: 75%;
   float: left;
+}
+
+#farm {
+  background: url(../images/farm.jpg);
+}
+
+#quarry {
+  background: url(../images/quarry.jpg);
 }
 
 #hut {
