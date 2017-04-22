@@ -38,8 +38,19 @@
   padding: 10px 0;
 }
 
+.raw_resource_buildings {
+  float: right;
+}
 
-#farm, #quarry {
+.population_buildings {
+  float: left;
+}
+
+.resources {
+  float: left;
+}
+
+#farm, #quarry, #lumberCamp {
   height: 86px;
   width: 75%;
   float: left;
@@ -51,6 +62,10 @@
 
 #quarry {
   background: url(../images/quarry.jpg);
+}
+
+#lumberCamp {
+  background: url(../images/lumberCamp.jpg);
 }
 
 #hut {

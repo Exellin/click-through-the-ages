@@ -39,124 +39,161 @@
   </tbody>
 </table>
 
-<div class="building_container">
-  <div class="border">
-    Population
-    <div class="right">
-      <span id="population_total"></span> / <span id="population_storage"></span>
+<div class="population_buildings">
+  <div class="building_container">
+    <div class="border">
+      Population
+      <div class="right">
+        <span id="population_total"></span> / <span id="population_storage"></span>
+      </div>
+    </div>
+    <div class="building" id="population">
+      <img src="https://maxcdn.icons8.com/iOS7/PNG/100/Users/global_citizen_filled-100.png">
+      <table>
+        <thead>
+          <tr>
+            <th>Unemployed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span id="population_unemployed">0</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="border">
+      <div class="cost">
+        <span id="population_food_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+      </div>
+      <div class="right">
+        <span id="population_food_rate"></span>/s
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+      </div>
     </div>
   </div>
-  <div class="building" id="population">
-    <img src="https://maxcdn.icons8.com/iOS7/PNG/100/Users/global_citizen_filled-100.png">
-    <table>
-      <thead>
-        <tr>
-          <th>Unemployed</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><span id="population_unemployed">0</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="border">
-    <div class="cost">
-      <span id="population_food_cost"></span>
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+  
+  
+  <div class="building_container">
+    <div class="border">
+      Hut
+      <div class="right">
+        <span id="hut_total"></span>
+      </div>
     </div>
-    <div class="right">
-      <span id="population_food_rate"></span>/s
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+    <div class="building" id="hut">
     </div>
-  </div>
+    <div class="border">
+      <div class="cost">
+        <span id="hut_stone_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
+      </div>
+      <div class="right">
+        <span id="hut_population"></span> max 
+        <div class="population_icon">
+        </div>
+      </div>
+    </div>
+  </div>  
 </div>
 
 
-<div class="building_container">
-  <div class="border">
-    Hut
-    <div class="right">
-      <span id="hut_total"></span>
+<div class="raw_resource_buildings">
+  <div class="building_container">
+    <div class="border">
+      Farm
+      <div class="right">
+        <span id="farm_worked"></span> / <span id="farm_total"></span>
+      </div>
+    </div>
+    <div class="building" id="farm">
+    </div>
+    <div class="worker_buttons">
+      <ul>
+        <li>
+          <button class="assign" id="farm_assign_worker">Assign Worker</button>
+        </li>
+        <li>
+          <button class="remove" id="farm_remove_worker">Remove Worker</button>
+        </li>
+      </ul>
+    </div>  
+    <div class="border">
+      <div class="cost">
+        <span id="farm_wood_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
+      </div>
+      <div class="right">
+        <span id="farm_food_rate"></span>/s
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
+      </div>
     </div>
   </div>
-  <div class="building" id="hut">
-  </div>
-  <div class="border">
-    <div class="cost">
-      <span id="hut_stone_cost"></span>
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
+  
+  <div class="building_container">
+    <div class="border">
+      Quarry
+      <div class="right">
+        <span id="quarry_worked"></span> / <span id="quarry_total"></span>
+      </div>
     </div>
-    <div class="right">
-      <span id="hut_population"></span> max 
-      <div class="population_icon">
+    <div class="building" id="quarry">
+    </div>
+    <div class="worker_buttons">
+      <ul>
+        <li>
+          <button class="assign" id="quarry_assign_worker">Assign Worker</button>
+        </li>
+        <li>
+          <button class="remove" id="quarry_remove_worker">Remove Worker</button>
+        </li>
+      </ul>
+    </div>  
+    <div class="border">
+      <div class="cost">
+        <span id="quarry_stone_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
+      </div>
+      <div class="right">
+        <span id="quarry_stone_rate"></span>/s
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
+      </div>
+    </div>
+  </div>
+  
+  <div class="building_container">
+    <div class="border">
+      Lumber Camp
+      <div class="right">
+        <span id="lumberCamp_worked"></span> / <span id="lumberCamp_total"></span>
+      </div>
+    </div>
+    <div class="building" id="lumberCamp">
+    </div>
+    <div class="worker_buttons">
+      <ul>
+        <li>
+          <button class="assign" id="lumberCamp_assign_worker">Assign Worker</button>
+        </li>
+        <li>
+          <button class="remove" id="lumberCamp_remove_worker">Remove Worker</button>
+        </li>
+      </ul>
+    </div>  
+    <div class="border">
+      <div class="cost">
+        <span id="lumberCamp_wood_cost"></span>
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
+      </div>
+      <div class="right">
+        <span id="lumberCamp_wood_rate"></span>/s
+        <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
       </div>
     </div>
   </div>
 </div>
 
-<div class="building_container">
-  <div class="border">
-    Farm
-    <div class="right">
-      <span id="farm_worked"></span> / <span id="farm_total"></span>
-    </div>
-  </div>
-  <div class="building" id="farm">
-  </div>
-  <div class="worker_buttons">
-    <ul>
-      <li>
-        <button class="assign" id="farm_assign_worker">Assign Worker</button>
-      </li>
-      <li>
-        <button class="remove" id="farm_remove_worker">Remove Worker</button>
-      </li>
-    </ul>
-  </div>  
-  <div class="border">
-    <div class="cost">
-      <span id="farm_wood_cost"></span>
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Travel/forest-24.png">
-    </div>
-    <div class="right">
-      <span id="farm_food_rate"></span>/s
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Plants/wheat-24.png">
-    </div>
-  </div>
-</div>
-
-<div class="building_container">
-  <div class="border">
-    Quarry
-    <div class="right">
-      <span id="quarry_worked"></span> / <span id="quarry_total"></span>
-    </div>
-  </div>
-  <div class="building" id="quarry">
-  </div>
-  <div class="worker_buttons">
-    <ul>
-      <li>
-        <button class="assign" id="quarry_assign_worker">Assign Worker</button>
-      </li>
-      <li>
-        <button class="remove" id="quarry_remove_worker">Remove Worker</button>
-      </li>
-    </ul>
-  </div>  
-  <div class="border">
-    <div class="cost">
-      <span id="quarry_stone_cost"></span>
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
-    </div>
-    <div class="right">
-      <span id="quarry_stone_rate"></span>/s
-      <img src="https://maxcdn.icons8.com/Color/PNG/24/Beauty/stones-24.png">
-    </div>
-  </div>
-</div>
 
 <section class="footer">
   <button id="save">Save Game</button>

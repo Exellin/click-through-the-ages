@@ -34,6 +34,13 @@ function setDefaults() {
         stone_rate: 2,
         worked: 0
       },
+      lumberCamp: {
+        name: "lumberCamp",
+        total: 0,
+        wood_cost: 10,
+        wood_rate: 2,
+        worked: 0
+      },
       population: {
         name: "population",
         total: 0,
@@ -195,6 +202,7 @@ function updateDisplay() {
     setProperty(gameState[category], "total");
     setProperty(gameState[category], "storage");
     setProperty(gameState[category], "wood_cost");
+    setProperty(gameState[category], "wood_rate");
     setProperty(gameState[category], "food_cost");
     setProperty(gameState[category], "food_rate");
     setProperty(gameState[category], "stone_cost");
