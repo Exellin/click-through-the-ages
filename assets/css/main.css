@@ -113,8 +113,12 @@ ul li button {
   float: left;
 }
 
-.cost img, .border img, .right{
+.cost img, .right{
   float: right;
+}
+
+.left {
+  float: left;
 }
 
 #population {
