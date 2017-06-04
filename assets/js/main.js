@@ -198,17 +198,12 @@ function incrementResource(resource) {
 }
 
 function updateDisplay() {
+  var propertiesToUpdate = ["total", "storage", "wood_cost", "wood_rate", "food_cost", "food_rate",
+                          "stone_cost", "stone_rate", "worked", "population"];
   Object.keys(gameState).forEach(function(category) {
-    setProperty(gameState[category], "total");
-    setProperty(gameState[category], "storage");
-    setProperty(gameState[category], "wood_cost");
-    setProperty(gameState[category], "wood_rate");
-    setProperty(gameState[category], "food_cost");
-    setProperty(gameState[category], "food_rate");
-    setProperty(gameState[category], "stone_cost");
-    setProperty(gameState[category], "stone_rate");
-    setProperty(gameState[category], "worked");
-    setProperty(gameState[category], "population");
+    propertiesToUpdate.forEach(function(propery) {
+      setProperty(gameState[category], propery);
+    });
   });
 
   Object.keys(gameState.resources).forEach(function (resourceName) {
