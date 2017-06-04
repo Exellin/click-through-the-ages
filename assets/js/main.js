@@ -59,15 +59,15 @@ function setDefaults() {
   return defaults;
 }
 
-window.setInterval(function() {
-  addResources();
-  save();
-  updateDisplay();
-}, 1000);
-
 initialize();
 
 function initialize() {
+  window.setInterval(function() {
+    addResources();
+    save();
+    updateDisplay();
+  }, 1000);
+  
   load();
 
   var resourceImageContainers = document.querySelectorAll(".resource_image_container");

@@ -4,7 +4,6 @@
 }
 
 footer {
-  margin: 0;
   width: 100%;
   background: black;
   position: fixed;
@@ -101,6 +100,10 @@ ul li button {
 
 .resources, .left, .population_buildings, .border .cost{
   float: left;
+}
+
+.raw_resource_buildings {
+  margin-bottom: 50px;
 }
 
 #population {
