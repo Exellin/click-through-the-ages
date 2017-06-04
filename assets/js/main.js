@@ -169,7 +169,7 @@ function animateResource(resourceImageContainer) {
   var html = document.querySelector("html");
   var maxY = html.clientHeight - resourceImg.clientHeight;
   var startX = resourceImg.getBoundingClientRect().left - 5;
-  var startY = resourceImg.getBoundingClientRect().top - 5;
+  var startY = resourceImg.getBoundingClientRect().top - 5  + window.pageYOffset;
   newResourceImg.src = resourceImg.src;
   newResourceImg.style.position = "absolute";
   resourceImageContainer.appendChild(newResourceImg);
