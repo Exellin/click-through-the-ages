@@ -201,8 +201,8 @@ function updateDisplay() {
   var propertiesToUpdate = ["total", "storage", "wood_cost", "wood_rate", "food_cost", "food_rate",
                           "stone_cost", "stone_rate", "worked", "population"];
   Object.keys(gameState).forEach(function(category) {
-    propertiesToUpdate.forEach(function(propery) {
-      setProperty(gameState[category], propery);
+    propertiesToUpdate.forEach(function(property) {
+      setProperty(gameState[category], property);
     });
   });
 
