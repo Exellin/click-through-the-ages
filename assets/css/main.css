@@ -10,12 +10,13 @@ footer {
   bottom: 0;
   left: 0;
   height: 32px;
+  overflow-x: auto;
 }
 
 footer a {
+  float: right;
   margin: 0 20px;
   line-height: 32px;
-  float: right;
   color: white;
   text-decoration: none;
 }
@@ -124,4 +125,10 @@ ul li button {
   width: 24px;
   height: 24px;
   float: right;
+}
+
+@media (max-width: 767px) {
+  .raw_resource_buildings {
+    float: left;
+  }
 }
