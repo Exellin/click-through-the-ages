@@ -151,9 +151,9 @@ function purchaseBuilding() {
       }
     });
     if (buildingName === "population") {
-       if (gameState.buildings[buildingName].total < maxPopulation) {
-          gameState.buildings[buildingName].total += 1;
-       }
+     if (gameState.buildings[buildingName].total < maxPopulation) {
+        gameState.buildings[buildingName].total += 1;
+     }
     } else {
       gameState.buildings[buildingName].total += 1;
     }
@@ -289,13 +289,13 @@ function starvePopulation(populationToStarve) {
   gameState.buildings.population.total -= populationToStarve;
   gameState.buildings.population.food_cost -= populationToStarve*10;
   if (jobsToRemove > 0) {
-    var eligibleJobsToRemove = [];
-    Object.keys(gameState.buildings).forEach(function(buildingName) {
-      if (gameState.buildings[buildingName].worked > 0) {
-        eligibleJobsToRemove.push(buildingName);
-      }
-    });
     for (var i = 0; i < jobsToRemove; i++) {
+      var eligibleJobsToRemove = [];
+      Object.keys(gameState.buildings).forEach(function(buildingName) {
+        if (gameState.buildings[buildingName].worked > 0) {
+          eligibleJobsToRemove.push(buildingName);
+        }
+      });
       var building = eligibleJobsToRemove[Math.floor(Math.random() * eligibleJobsToRemove.length)];
       gameState.buildings[building].worked -= 1;
     }
