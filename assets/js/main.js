@@ -17,6 +17,10 @@ function setDefaults() {
         name: "wood",
         total: 0,
         storage: 1000
+      },
+      science: {
+        name: "science",
+        total: 0
       }
     },
     buildings : {
