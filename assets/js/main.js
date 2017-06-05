@@ -280,7 +280,8 @@ function calculateResourceRate(resourceName) {
   }
   else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
     if (resourceName === "food") {
-      starvePopulation(-resourcesPerTick);
+      var populationToStarve = -gameState.resources[resourceName].total - resourcesPerTick;
+      starvePopulation(populationToStarve);
     }
     resourcesPerTick = 0 - gameState.resources[resourceName].total;
   }
