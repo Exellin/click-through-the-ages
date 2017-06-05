@@ -71,7 +71,7 @@ function initialize() {
   load();
 
   var resourceImageContainers = document.querySelectorAll(".resource_image_container");
-  for(var i = 0; i < resourceImageContainers.length; i++) {
+  for (var i = 0; i < resourceImageContainers.length; i++) {
     resourceImageContainers[i].addEventListener("click", resourceClickEvents);
   }
   
@@ -275,9 +275,32 @@ function calculateResourceRate(resourceName) {
     resourcesPerTick = gameState.resources[resourceName].storage - gameState.resources[resourceName].total;
   }
   else if (resourcesPerTick < (0 - gameState.resources[resourceName].total)) {
+    if (resourceName === "food") {
+      starvePopulation(-resourcesPerTick);
+    }
     resourcesPerTick = 0 - gameState.resources[resourceName].total;
   }
   return resourcesPerTick;
+}
+
+function starvePopulation(populationToStarve) {
+  var unemployed = calculateUnemployed();
+  var jobsToRemove = populationToStarve - unemployed;
+  gameState.buildings.population.total -= populationToStarve;
+  gameState.buildings.population.food_cost -= populationToStarve*10;
+  if (jobsToRemove > 0) {
+    var eligibleJobsToRemove = [];
+    Object.keys(gameState.buildings).forEach(function(buildingName) {
+      if (gameState.buildings[buildingName].worked > 0) {
+        eligibleJobsToRemove.push(buildingName);
+      }
+    });
+    for (var i = 0; i < jobsToRemove; i++) {
+      var building = eligibleJobsToRemove[Math.floor(Math.random() * eligibleJobsToRemove.length)];
+      gameState.buildings[building].worked -= 1;
+    }
+  }
+  updateDisplay();
 }
 
 function calculateMaxPopulation() {
